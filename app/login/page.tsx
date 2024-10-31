@@ -11,9 +11,11 @@ const LoginPage = () => {
   async function loginWithGoogle() {
     setIsLoading(true);
     try {
-      await signIn("google");
+      // Use callbackUrl to redirect to dashboard after login
+      const callbackUrl = "/dashboard"; // Set your desired redirect URL here
+      await signIn("google", { callbackUrl });
     } catch (error) {
-      toast.error("something went wrong");
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
